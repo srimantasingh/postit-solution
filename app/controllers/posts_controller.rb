@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 
     if @post.update(post_params)
       flash[:notice] = "Post was updated"
-      #redirect_to post_path(post)
+      #redirect_to post_path(@post)
       redirect_to posts_path
     else
       render 'edit'
