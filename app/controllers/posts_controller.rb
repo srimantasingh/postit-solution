@@ -28,8 +28,7 @@ class PostsController < ApplicationController
 
   end
 
-  def edit
-  end
+  def edit; end # ; is used as line separator 
 
   def update
     
