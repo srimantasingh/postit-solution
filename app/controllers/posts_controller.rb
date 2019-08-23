@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+
+  before_action :set_posts, only: [:show, :edit, :update]
 	
   def index
   	@posts = Post.all
@@ -6,7 +8,6 @@ class PostsController < ApplicationController
 
   def show 
   	#binding pry
-  	@post = Post.find(params[:id])
   end
 
   def new
@@ -28,12 +29,10 @@ class PostsController < ApplicationController
   end
 
   def edit
-  	@post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
-
+    
     if @post.update(post_params)
       flash[:notice] = "Post was updated"
       #redirect_to post_path(@post)
@@ -48,6 +47,10 @@ class PostsController < ApplicationController
   def post_params
 	#params.require(:post).permit(:title, :url)  
 	params.require(:post).permit!	
+  end
+
+  def set_posts
+    @post = Post.find(params[:id])
   end
 
 end
