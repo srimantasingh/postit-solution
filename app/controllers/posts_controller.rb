@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def show 
   	#binding pry
+    @comment = Comment.new
   end
 
   def new
@@ -44,8 +45,8 @@ class PostsController < ApplicationController
 
   private
   def post_params
-	#params.require(:post).permit(:title, :url)  
-	params.require(:post).permit!	
+	   #params.require(:post).permit(:title, :url)  
+	   params.require(:post).permit!	
   end
 
   def set_posts
