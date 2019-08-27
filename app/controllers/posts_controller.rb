@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :set_posts, only: [:show, :edit, :update]
-  before_action :require, except: [:show, :index]
+  before_action :require_user, except: [:show, :index]
 	
   def index
   	@posts = Post.all
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def new
-  	@post = Post.new
+    @post = Post.new
   end
 
   def create
@@ -44,14 +44,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def set_posts
+    @post = Post.find(params[:id])
+  end
+
   private
   def post_params
 	   #params.require(:post).permit(:title, :url)  
 	   params.require(:post).permit!	
   end
 
-  def set_posts
-    @post = Post.find(params[:id])
-  end
+ 
 
 end

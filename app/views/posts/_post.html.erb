@@ -1,0 +1,11 @@
+<h4><%= link_to post.title, fix_url(post.url) %></h4>
+<p><%= post.description %></p>
+<p>
+	<span class="quiet">posted by </span> 
+		<% if post.user %>
+			<%= post.user.username %>
+		<% else %>
+			username_not_set 
+		<% end %>
+	<small>at <%= format_date(post.created_at) %></small>
+</p>

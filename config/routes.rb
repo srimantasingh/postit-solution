@@ -1,4 +1,5 @@
 PostitTemplate::Application.routes.draw do
+  
   root to: 'posts#index'
 
   get '/register', to: 'users#new'
@@ -8,7 +9,8 @@ PostitTemplate::Application.routes.draw do
   	resources 'comments', only: :create
   end
   resources 'categories', only: [:new, :create, :show]
-  resources 'users', only: [:show, :create, :edit, :udpate]
+  resources 'users', only: [:show, :create, :edit, :update]
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
