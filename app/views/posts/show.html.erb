@@ -5,13 +5,15 @@
 		<%= render 'shared/content_title', title: @post.title %>
 		<%= link_to @post.title, fix_url(@post.url) %>
 		<p><%= @post.description %></p>
-		<h5>Create a comment</h5>
-		<%= form_for [@post, @comment] do |f| %>
-			<%= render 'shared/errors', obj: @comment %>
-			<%= f.label :body, 'Leave a comment' %>
-			<%= f.text_area :body, rows: 3, class: 'span4'%>
-			<br>
-			<%= f.submit 'Create Comment', class: "btn btn-primary" %>
+		<% if logged_in? %>
+			<h5>Create a comment</h5>
+			<%= form_for [@post, @comment] do |f| %>
+				<%= render 'shared/errors', obj: @comment %>
+				<%= f.label :body, 'Leave a comment' %>
+				<%= f.text_area :body, rows: 3, class: 'span4'%>
+				<br>
+				<%= f.submit 'Create Comment', class: "btn btn-primary" %>
+			<% end %>
 		<% end %>
 </div>
 

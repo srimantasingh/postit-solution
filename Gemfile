@@ -15,6 +15,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'sqlite3', '~> 1.3.6'
+#gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bcrypt', '~> 3.1.2'
 
 group :doc do
   gem 'sdoc', require: false
