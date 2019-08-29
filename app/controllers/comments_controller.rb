@@ -1,7 +1,10 @@
 class CommentsController < ApplicationController 
 
+	before_action :require_user
+	before_action :set_posts, only: [:create, :vote]
+
+
 	def create
-		@post = Post.find(params[:post_id])
 		@comment = @post.comments.build(params.require(:comment).permit(:body))
 		@comment.user = current_user
 
@@ -13,5 +16,22 @@ class CommentsController < ApplicationController
 		end
 
 	end
+
+	def vote
+		#binding pry
+		@comment = Comment.find(params[:id])
+		vote = Vote.create(voteable: @comment, creator: current_user, vote: params[:vote])
+		if vote.valid?
+    		flash[:notice] = 'Your vote was counted'
+    	else
+    		flash[:error] = 'You can vote only once'
+    	end
+    	redirect_to :back
+	end
+
+	def set_posts
+		@post = Post.find(params[:post_id])
+	end
+
 	
 end

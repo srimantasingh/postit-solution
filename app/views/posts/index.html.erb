@@ -1,20 +1,11 @@
 <%= render 'shared/content_title', title: 'All Post' %>
 
 <% @posts.each do |post| %>
-	<div class="row">
-		<div class="span8 well">
-			<%= render post.categories %>
-			<%= render 'post', post: post %>
-			<small>
-				<span>
-					<%= link_to("#{post.comments.size} comments", post_path(post))%>
-				</span>
-			</small>
+	
+			<%= render 'post', post: post %>			
 			<% if logged_in? %>
 				<div class='pull-right'>
 					[<%= link_to 'Edit this Post', edit_post_path(post) %>]
 				</div>
-			<% end %>
-		</div>
-	</div>
+			<% end %>		
 <% end %>
