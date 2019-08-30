@@ -15,7 +15,7 @@ class Category < ActiveRecord::Base
 		count = 2
 		while category && category != self
 			new_slug = append_suffix(new_slug, count)
-			category = Post.find_by slug: new_slug
+			category = Category.find_by slug: new_slug
 			count += 1
 		end
 		self.slug = new_slug.downcase

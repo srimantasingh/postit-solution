@@ -25,15 +25,8 @@
 		<%= render 'posts/post', post: post %>
 	<% end %>
 <% else %>
-
 	<% @user.comments.each do |comment| %>
 		<%= render 'comments/comment', comment: comment, show_post: true %>
-		<div class="well span8">
-			<em><%= comment.body %></em>
-			<br>
-			<span class="quiet">by </span><%= comment.user ? comment.user.username : 'Empty Username' %> 
-			<small>at <%= format_date(comment.created_at) %></small>
-		</div>
 	<% end %>
 <% end %>
 
