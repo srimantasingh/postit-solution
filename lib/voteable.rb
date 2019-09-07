@@ -1,4 +1,4 @@
-=begin
+begin
 module Voteable
 	extend ActiveSupport::Concern
 
@@ -7,7 +7,7 @@ module Voteable
 	end
 
 	def total_votes
-			self.up_votes - self.down_votes
+		self.up_votes - self.down_votes
 	end
 
 	def up_votes
@@ -18,9 +18,8 @@ module Voteable
 		self.votes.where(vote: false).size
 	end
 
-
 end
-=end
+
 
 #using meta programming
 =begin

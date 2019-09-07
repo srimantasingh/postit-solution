@@ -2,9 +2,13 @@ class PostsController < ApplicationController
 
   before_action :set_posts, only: [:show, :edit, :update, :vote]
   before_action :require_user, except: [:show, :index]
+  before_action :require_creator, only: [:edit, :update]
 	
   def index
-  	@posts = Post.all.sort_by{|x| x.total_votes}.reverse
+    @posts = Post.limit(Post::PER_PAGE).offset(params[:offset])
+  	#@posts = Post.all.sort_by{|x| x.total_votes}.reverse
+    @pages = Post.all.size/Post::PER_PAGE 
+    @pages += 1 if Post.all.size % Post::PER_PAGE > 0
   end
 
   def show 
@@ -65,6 +69,10 @@ class PostsController < ApplicationController
 
   def set_posts
     @post = Post.find_by(slug: params[:id])
+  end
+
+  def require_creator
+    access_denied unless logged_in? and (current_user == @post.user || current_user.admin?)
   end
 
   private

@@ -1,11 +1,20 @@
 <%= render 'shared/content_title', title: 'All Post' %>
 
 <% @posts.each do |post| %>
-	
+
 			<%= render 'post', post: post %>			
 			<% if logged_in? %>
 				<div class='pull-right'>
 					[<%= link_to 'Edit this Post', edit_post_path(post) %>]
 				</div>
-			<% end %>		
+			<% end %>
+<% end %>		
+
+
+<% @pages.times do |n| %>
+	<% if ((params[:offset].nil? && n == 0) || (params[:offset].to_s == (n * Post::PER_PAGE).to_s)) %>
+		<%= "| Page #{n+1}" %>
+	<% else %>	
+		<%= link_to "| Page #{n+1}", posts_path(offset: n * Post::PER_PAGE) %>
+	<% end %>
 <% end %>

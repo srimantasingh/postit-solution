@@ -2,6 +2,10 @@ class Post < ActiveRecord::Base
 
 	include Voteable 
 	include Sluggable
+
+	PER_PAGE = 3
+
+	default_scope {order('created_at ASC')}
 	
 	belongs_to :user
 	#belongs_to :creator, class_name: 'User', foreign_key: 'user_id'
