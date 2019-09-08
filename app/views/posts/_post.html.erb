@@ -34,4 +34,9 @@
 			</span>
 		</small>
 	</div>
+	<% if logged_in? %>
+		<div class='pull-right'>
+			[<%= link_to 'Edit this Post', edit_post_path(post) %>]
+		</div>
+	<% end %>
 </div>

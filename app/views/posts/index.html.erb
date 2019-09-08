@@ -3,11 +3,7 @@
 <% @posts.each do |post| %>
 
 			<%= render 'post', post: post %>			
-			<% if logged_in? %>
-				<div class='pull-right'>
-					[<%= link_to 'Edit this Post', edit_post_path(post) %>]
-				</div>
-			<% end %>
+			
 <% end %>		
 
 
