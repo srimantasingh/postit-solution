@@ -1,4 +1,4 @@
-begin
+#begin
 module Voteable
 	extend ActiveSupport::Concern
 
@@ -50,6 +50,5 @@ end
 		def my_class_method
 			has_many :votes, as: :voteable
 		end
-	end
-	
+	end	
 =end
