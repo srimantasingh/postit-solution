@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
 
+  #include ActionController::Helpers
+  #helper CommonHelper
+
   before_action :set_posts, only: [:show, :edit, :update, :vote]
   before_action :require_user, except: [:show, :index]
   before_action :require_creator, only: [:edit, :update]
@@ -23,7 +26,6 @@ class PostsController < ApplicationController
   def create
   	@post = Post.new(post_params)
   	@post.user = current_user
-  	#binding pry
 
   	if @post.save
   		flash[:notice] = "Your post was created"
@@ -37,13 +39,12 @@ class PostsController < ApplicationController
   def edit; end # ; is used as line separator 
 
   def update
-    
     if @post.update(post_params)
       flash[:notice] = "Post was updated"
       #redirect_to post_path(@post)
-      redirect_to posts_path
+      redirect_to post_path(@post)
     else
-      render 'edit'
+      render 'edit', post: @post 
       #render :edit - this also works
     end
   end

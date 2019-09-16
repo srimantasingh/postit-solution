@@ -27,6 +27,16 @@ group :development do
   gem 'quiet_assets'
   gem 'pry'
   #gem 'sqlite3'
+  #gem 'rspec-rails'#, '~> 3.8'
+end
+
+group :test do
+  #gem 'quiet_assets'
+  #gem 'pry'
+  #gem 'sqlite3
+  gem 'rspec', '~> 3.8'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'rails-controller-testing'
 end
 
 group :production do

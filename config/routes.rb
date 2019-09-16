@@ -1,5 +1,6 @@
 PostitTemplate::Application.routes.draw do
   
+  resources :widgets
   root to: 'posts#index'
 
   get '/register', to: 'users#new'
