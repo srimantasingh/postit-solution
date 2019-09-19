@@ -34,5 +34,5 @@
   Current Rails Version : 5.1.5
   Ruby Version : 2.6.3
   RSpec Version : 3.8.2
-  RVM Version : 1.29.9 ([rvm is used for installing ruby](https://github.com/rvm/ubuntu_rvm))
+  RVM Version : 1.29.9 [rvm is used for installing ruby](https://github.com/rvm/ubuntu_rvm)
 
