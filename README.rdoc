@@ -28,7 +28,7 @@
   - heroku run console
   - heroku help
   
-  == Notes
+== Notes
   
   Current Rails Version : 5.1.5
   Ruby Version : 2.6.3
